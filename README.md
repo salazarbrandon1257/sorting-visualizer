@@ -5,5 +5,5 @@
 - Click the link below to try it out 
 <br /> 
 
-![Screenshot](Mathek.png)
+[Visualizer link](https://salazarbrandon1257.github.io/sorting-visualizer/)
 
