@@ -1,9 +1,8 @@
 .array-container {
     position: absolute;
-    top: 50px;
+    top: 100px;
     left: 100px;
     right: 100px;
-    /* top: 100px; */
   }
   
   .array-bar {
@@ -11,3 +10,25 @@
     display: inline-block;
     margin: 0 1px;
   }
+  
+button {
+      color: #64ffda;
+      background-color: transparent;
+      border: 1px solid #64ffda;
+      border-radius: var(--border-radius);
+      padding: 0.75rem 1rem;
+      font-family: var(--font-mono);
+      line-height: 1;
+      text-decoration: none;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-left: 15px;
+      font-size: var(--fz-xs);
+}
+button:hover {
+  color: white;
+}
+button:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
