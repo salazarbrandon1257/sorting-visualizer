@@ -1,5 +1,5 @@
 import React from 'react';
-import {getMergeSortAnimations} from '../sortingAlgorithms/sortingAlgorithms.js';
+import {getMergeSortAnimations} from '../sortingAlgorithms/MergeSort.js';
 import {getBubbleSortAnimations} from '../sortingAlgorithms/BubbleSort.js';
 import {getQuickSortAnimations} from '../sortingAlgorithms/QuickSort.js';
 import {getHeapSortAnimations} from '../sortingAlgorithms/HeapSort.js';
@@ -23,7 +23,7 @@ export default class SortingVisualizer extends React.Component {
     super(props);
 
     this.state = {
-      array: [],
+      array: []
     };
   }
 
@@ -33,10 +33,17 @@ export default class SortingVisualizer extends React.Component {
 
   resetArray() {
     const array = [];
+    const arrayBars = document.getElementsByClassName('array-bar');
+
     for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
       array.push(randomIntFromInterval(5, 550));
+      if (arrayBars.length > 0){
+        arrayBars[i].style.backgroundColor= PRIMARY_COLOR;
+      }    
     }
     this.setState({array});
+    //clears all timeouts, thereby stopping the animations
+    clearAllTimeouts();
   }
 
   mergeSort() {
@@ -172,22 +179,6 @@ export default class SortingVisualizer extends React.Component {
     }
   }
 
-  // NOTE: This method will only work if your sorting algorithms actually return
-  // the sorted arrays; if they return the animations (as they currently do), then
-  // this method will be broken.
-  testSortingAlgorithms() {
-    for (let i = 0; i < 100; i++) {
-      const array = [];
-      const length = randomIntFromInterval(1, 1000);
-      for (let i = 0; i < length; i++) {
-        array.push(randomIntFromInterval(-1000, 1000));
-      }
-      const javaScriptSortedArray = array.slice().sort((a, b) => a - b);
-      const mergeSortedArray = getMergeSortAnimations(array.slice());
-      console.log(arraysAreEqual(javaScriptSortedArray, mergeSortedArray));
-    }
-  }
-
   render() {
     const {array} = this.state;
 
@@ -213,17 +204,15 @@ export default class SortingVisualizer extends React.Component {
   }
 }
 
+function clearAllTimeouts() {
+  const highestId = window.setTimeout(() => {
+    for (let i = highestId; i >= 0; i--) {
+      window.clearInterval(i);
+    }
+  }, 0);
+}
+
 function randomIntFromInterval(min, max) {
   // min and max included
   return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-function arraysAreEqual(arrayOne, arrayTwo) {
-  if (arrayOne.length !== arrayTwo.length) return false;
-  for (let i = 0; i < arrayOne.length; i++) {
-    if (arrayOne[i] !== arrayTwo[i]) {
-      return false;
-    }
-  }
-  return true;
 }

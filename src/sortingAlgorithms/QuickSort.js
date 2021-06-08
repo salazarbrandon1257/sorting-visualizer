@@ -6,14 +6,6 @@ export function getQuickSortAnimations(array) {
     const combine = [animations, index];
     return combine;
   }
-/*function quickSort(stateArray, dispatch, speed) {
-  let array = stateArray.slice(0),
-      toDispatch = [];
-  quickSortHelper(array, 0, array.length - 1, toDispatch);
-  handleDispatch(toDispatch, dispatch, array, speed);
-  return array;
-}
-*/
 
 function partition(array, start, end, animations, index) 
 	{ 
@@ -32,13 +24,9 @@ function partition(array, start, end, animations, index)
                 animations.push([i, j]);
                 animations.push([i, j]);
                 animations.push([array[i], array[j]]);
-                // console.log(animations);
-                //console.log("a");
                 index.push([i, j]);
                 index.push([i, j]);
                 index.push([i, j]);
-                //console.log(index);
-                //console.log("i");
 
 				array[i] = array[j]; 
 				array[j] = temp; 
@@ -50,13 +38,10 @@ function partition(array, start, end, animations, index)
         animations.push([i + 1, end]);
         animations.push([i + 1, end]);
         animations.push([array[i+1], array[end]]);
-        //console.log(animations);
-        //console.log("a");
+
         index.push([i + 1, end]);
         index.push([i + 1, end]);
         index.push([i + 1, end]);
-       // console.log(index);
-        // console.log("i");
 
 		array[i + 1] = array[end]; 
 		array[end] = temp; 
@@ -69,12 +54,9 @@ function doQuick(array, start, end, animations, index) {
 		/* pi is partitioning index, arr[pi] is 
         now at right place */
         let pi = partition(array, start, end, animations, index); 
-       // console.log(pi);
-        // console.log(array);
 		// Recursively sort elements before 
 		// partition and after partition 
         doQuick(array, start, pi - 1, animations, index); 
         doQuick(array, pi + 1, end, animations, index);
     }  
-    //console.log(index.length);
 }

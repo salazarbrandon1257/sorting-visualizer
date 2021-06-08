@@ -10,7 +10,6 @@ export function getBubbleSortAnimations(array) {
 
 
 function doBubble(mainArray,  animations, index) {
-    console.log(mainArray);
     let sorted = false,
         round = 0;
     while (!sorted) {
