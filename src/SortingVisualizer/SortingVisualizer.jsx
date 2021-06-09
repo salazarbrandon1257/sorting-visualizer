@@ -18,12 +18,17 @@ const PRIMARY_COLOR = '#64ffda';
 // This is the color of array bars that are being compared throughout the animations.
 const SECONDARY_COLOR = 'red';
 
+export const setArrayBarNumberOut = {
+
+};
+
+
 export default class SortingVisualizer extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      array: []
+      array: [],
+      arrayBarNumber: NUMBER_OF_ARRAY_BARS,
     };
   }
 
@@ -31,19 +36,31 @@ export default class SortingVisualizer extends React.Component {
     this.resetArray();
   }
 
-  resetArray() {
+  resetArray(arrayBarNumber =this.state.arrayBarNumber) {
     const array = [];
     const arrayBars = document.getElementsByClassName('array-bar');
 
-    for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
+    console.log(arrayBarNumber);
+    console.log(arrayBars.length);
+    for (let i = 0; i < arrayBarNumber; i++) {
       array.push(randomIntFromInterval(5, 550));
-      if (arrayBars.length > 0){
+      if (arrayBars.length > 0 && arrayBarNumber === arrayBars.length){
         arrayBars[i].style.backgroundColor= PRIMARY_COLOR;
       }    
     }
     this.setState({array});
     //clears all timeouts, thereby stopping the animations
     clearAllTimeouts();
+  }
+
+  setArrayBarNumber() {
+//here I will inpout the new number, grabbed from the html onvhange on the other file
+    const arrayBarNumber = document.getElementById('dz').getElementsByTagName('span')[9].ariaValueNow;
+     console.log(arrayBarNumber);
+    //$('.App nav span.MuiSlider-thumb').ariaValueNow;
+ 
+    this.setState({arrayBarNumber : arrayBarNumber}, () => {    console.log(this.state.arrayBarNumber);});
+    this.resetArray(arrayBarNumber);
   }
 
   mergeSort() {
@@ -199,7 +216,7 @@ export default class SortingVisualizer extends React.Component {
         <button onClick={() => this.heapSort()}>Heap Sort</button>
         <button onClick={() => this.insertionSort()}>Insertion Sort</button>
         <button onClick={() => this.quickSort()}>Quick Sort</button>
-        <button onClick={() => this.mergeSort()}>Merge Sort</button>
+        <button onClick={() => this.setArrayBarNumber()}>Merge Sort</button>
         </div>
         </div>
     );
