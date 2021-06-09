@@ -52,6 +52,14 @@ export default class SortingVisualizer extends React.Component {
     clearAllTimeouts();
   }
 
+  resetArrayColors() {
+    const arrayBars = document.getElementsByClassName('array-bar');
+
+    for (let i = 0; i < arrayBars.length; i++) {
+      arrayBars[i].style.backgroundColor= PRIMARY_COLOR;
+    }
+  }
+
   setArrayBarNumber() {
     var arrayBarNumber = NUMBER_OF_ARRAY_BARS;
     //here I will inpout the new number, grabbed from the html onvhange on the other file
@@ -197,7 +205,7 @@ export default class SortingVisualizer extends React.Component {
 
   render() {
     const {array} = this.state;
-
+    this.resetArrayColors();
     return (
 
       <div className="array-container">
