@@ -1,13 +1,6 @@
 import React from 'react';
 import { Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
-import Slider from '@material-ui/core/Slider';
-//import objects from '../objects/objects';
-
-function valuetext(value) {
-  return `${value}°C`;
-}
-
 
 const Styles = styled.div`
   .navbar { background-color: #0a192f; }
@@ -35,30 +28,12 @@ const Styles = styled.div`
     -webkit-tap-highlight-color: transparent;
   }
 `;
-function sendArrayBarNumber(){
-  console.log("sendarray numbner is called");
-  //objects['FirstComponent'] = this; 
-  }
-
-
 
 export const NavigationBar = () => (
   <Styles>
     <Navbar expand="lg">
       <Navbar.Brand href="/">Sorting Visualizer</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />       
-      <Slider
-      id="dz"
-      
-        defaultValue={90}
-        onChangeCommitted={sendArrayBarNumber}
-        getAriaValueText={valuetext}
-        aria-labelledby="discrete-slider"
-        step={30}
-        marks
-        min={10}
-        max={219}
-      />
     </Navbar>
   </Styles>
 )

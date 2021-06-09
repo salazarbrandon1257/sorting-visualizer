@@ -38,3 +38,21 @@ button:active {
   transform: scale(0.98);
   box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
 }
+
+#dz2 {
+  position: fixed;
+  top:   15px;
+  width: 40%;
+  margin: auto;
+  left: 25%;
+  right: 25%;
+
+
+  color: #49b89e;
+  cursor: pointer;
+  height: 2px;
+  display: inline-block;
+  box-sizing: content-box;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent; 
+}
