@@ -14,8 +14,6 @@ function App() {
           <NavigationBar />
         </Router>
       </React.Fragment>
-      <div>
-      </div>
       <SortingVisualizer></SortingVisualizer>
     </div>
   );
