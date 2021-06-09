@@ -2,7 +2,6 @@ export function getHeapSortAnimations(array) {
     const animations = [];
     const index = [];
     if (array.length <= 1) return array;
-    const auxiliaryArray = array.slice();
     doHeap(array, animations, index);
     const combine = [animations, index];
     return combine;
@@ -51,7 +50,7 @@ function doHeap(array, animations, index) {
         largest = r;
   
       // Swap and continue heapifying if root is not largest
-      if (largest != i) {
+      if (largest !== i) {
         let temp = array[i];
 
         animations.push([i, largest]);

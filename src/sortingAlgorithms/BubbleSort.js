@@ -2,7 +2,6 @@ export function getBubbleSortAnimations(array) {
     const animations = [];
     const index = [];
     if (array.length <= 1) return array;
-    const auxiliaryArray = array.slice();
     doBubble(array, animations, index);
     const combine = [animations, index];
     return combine;
