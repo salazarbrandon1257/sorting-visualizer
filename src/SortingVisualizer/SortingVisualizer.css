@@ -13,6 +13,8 @@
 
 .buttons-container {
   clear:both;
+  left: 25px;
+  right: 25px;
 }
 
 button {

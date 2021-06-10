@@ -12,10 +12,10 @@ import { isMobile } from 'react-device-detect';
 // const isMobile = true;
 
 // Change this value for the speed of the animations.
-const ANIMATION_SPEED_MS = 1;
+const ANIMATION_SPEED_MS = isMobile ? 3 : 1;
 
 // Change this value for the number of bars (value) in the array.
-const NUMBER_OF_ARRAY_BARS = isMobile ? 70 : 170;
+const NUMBER_OF_ARRAY_BARS = isMobile ? 33 : 170;
 
 // This is the main color of the array bars.
 const PRIMARY_COLOR = '#64ffda';
@@ -64,7 +64,7 @@ export default class SortingVisualizer extends React.Component {
     var arrayBarNumber = NUMBER_OF_ARRAY_BARS;
     //here I will inpout the new number, grabbed from the html onvhange on the other file
     if (document.getElementById('dz2')){
-      const index = isMobile ? 8 : 9;
+      const index = isMobile ? 7 : 9;
       arrayBarNumber = document.getElementById('dz2').getElementsByTagName('span')[index].ariaValueNow;
       this.setState({arrayBarNumber : arrayBarNumber});
       this.resetArray(arrayBarNumber);
@@ -216,11 +216,11 @@ export default class SortingVisualizer extends React.Component {
           defaultValue={NUMBER_OF_ARRAY_BARS}
           onChangeCommitted={() => this.setArrayBarNumber()}
           aria-labelledby="discrete-slider"
-          step={isMobile ? 20 : 40}
+          step={isMobile ? 13 : 40}
           marks
-          min={10}
-          max={isMobile ? 90 : 210}
-          style={isMobile ? {top : '30px'}: {top : '15px'}}
+          min={20}
+          max={isMobile ? 59 : 210}
+          style={isMobile ? {top : '45px'}: {top : '15px'}}
           /></div>
         {array.map((value, idx) => (
           <div
