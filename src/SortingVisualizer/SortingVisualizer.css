@@ -1,8 +1,8 @@
 .array-container {
   position: absolute;
   top: 100px;
-  left: 50px;
-  right: 50px;
+  left: 35px;
+  right: 35px;
 }
 
 .array-bar {
@@ -13,8 +13,8 @@
 
 .buttons-container {
   clear:both;
-  left: 25px;
-  right: 25px;
+  left: 50px;
+  right: 50px;
 }
 
 button {

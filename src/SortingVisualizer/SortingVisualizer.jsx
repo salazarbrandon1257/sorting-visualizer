@@ -9,13 +9,13 @@ import Slider from '@material-ui/core/Slider';
 import { isMobile } from 'react-device-detect';
 
 //testing
-// const isMobile = true;
+//const isMobile = true;
 
 // Change this value for the speed of the animations.
 const ANIMATION_SPEED_MS = isMobile ? 3 : 1;
 
 // Change this value for the number of bars (value) in the array.
-const NUMBER_OF_ARRAY_BARS = isMobile ? 33 : 170;
+const NUMBER_OF_ARRAY_BARS = isMobile ? 42 : 170;
 
 // This is the main color of the array bars.
 const PRIMARY_COLOR = '#64ffda';
@@ -209,18 +209,18 @@ export default class SortingVisualizer extends React.Component {
     this.resetArrayColors();
     return (
 
-      <div className="array-container">
+      <div className="array-container" style={isMobile ? {top : '175px'}: {top : '100px'}}>
         <div id="dz2" className="visualizer-container" >                        
         <Slider
           id="dz2"
           defaultValue={NUMBER_OF_ARRAY_BARS}
           onChangeCommitted={() => this.setArrayBarNumber()}
           aria-labelledby="discrete-slider"
-          step={isMobile ? 13 : 40}
+          step={isMobile ? 11 : 40}
           marks
-          min={20}
-          max={isMobile ? 59 : 210}
-          style={isMobile ? {top : '45px'}: {top : '15px'}}
+          min={isMobile ? 20 : 10}
+          max={isMobile ? 53 : 210}
+          style={isMobile ? {top : '60px'}: {top : '15px'}}
           /></div>
         {array.map((value, idx) => (
           <div
