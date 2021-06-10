@@ -6,4 +6,3 @@
 <br /> 
 
 [Visualizer link](https://salazarbrandon1257.github.io/sorting-visualizer/)
-
