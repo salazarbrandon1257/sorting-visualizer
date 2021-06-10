@@ -6,10 +6,10 @@ import {getHeapSortAnimations} from '../sortingAlgorithms/HeapSort.js';
 import {getInsertionSortAnimations} from '../sortingAlgorithms/InsertionSort.js';
 import './SortingVisualizer.css';
 import Slider from '@material-ui/core/Slider';
-//import { isMobile } from 'react-device-detect';
+import { isMobile } from 'react-device-detect';
 
 //testing
-const isMobile = true;
+//const isMobile = true;
 
 // Change this value for the speed of the animations.
 const ANIMATION_SPEED_MS = isMobile ? 3 : 1;
