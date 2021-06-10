@@ -5,7 +5,7 @@
 - Click the link below to try it out 
 <br /> 
 
-(https://salazarbrandon1257.github.io/sorting-visualizer/)
+[salazarbrandon1257.github.io/sorting-visualizer/](https://salazarbrandon1257.github.io/sorting-visualizer/)
 
 
 
