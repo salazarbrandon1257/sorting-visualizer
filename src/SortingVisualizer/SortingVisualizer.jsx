@@ -6,23 +6,22 @@ import {getHeapSortAnimations} from '../sortingAlgorithms/HeapSort.js';
 import {getInsertionSortAnimations} from '../sortingAlgorithms/InsertionSort.js';
 import './SortingVisualizer.css';
 import Slider from '@material-ui/core/Slider';
+import { isMobile } from 'react-device-detect';
+
+//testing
+// const isMobile = true;
 
 // Change this value for the speed of the animations.
 const ANIMATION_SPEED_MS = 1;
 
 // Change this value for the number of bars (value) in the array.
-const NUMBER_OF_ARRAY_BARS = 170;
+const NUMBER_OF_ARRAY_BARS = isMobile ? 70 : 170;
 
 // This is the main color of the array bars.
 const PRIMARY_COLOR = '#64ffda';
 
 // This is the color of array bars that are being compared throughout the animations.
 const SECONDARY_COLOR = 'red';
-
-function valuetext(value) {
-  return `${value}°C`;
-}
-
 
 export default class SortingVisualizer extends React.Component {
   constructor(props) {
@@ -42,7 +41,8 @@ export default class SortingVisualizer extends React.Component {
     const arrayBars = document.getElementsByClassName('array-bar');
 
     for (let i = 0; i < arrayBarNumber; i++) {
-      array.push(randomIntFromInterval(5, 550));
+      const pixelHeight = isMobile ? 300 : 550; 
+      array.push(randomIntFromInterval(5, pixelHeight));
       if (arrayBars.length > 0 && arrayBarNumber === arrayBars.length){
         arrayBars[i].style.backgroundColor= PRIMARY_COLOR;
       }    
@@ -64,7 +64,8 @@ export default class SortingVisualizer extends React.Component {
     var arrayBarNumber = NUMBER_OF_ARRAY_BARS;
     //here I will inpout the new number, grabbed from the html onvhange on the other file
     if (document.getElementById('dz2')){
-      arrayBarNumber = document.getElementById('dz2').getElementsByTagName('span')[9].ariaValueNow;
+      const index = isMobile ? 8 : 9;
+      arrayBarNumber = document.getElementById('dz2').getElementsByTagName('span')[index].ariaValueNow;
       this.setState({arrayBarNumber : arrayBarNumber});
       this.resetArray(arrayBarNumber);
     }
@@ -209,17 +210,17 @@ export default class SortingVisualizer extends React.Component {
     return (
 
       <div className="array-container">
-        <div id="dz2" className="visualizer-container">                        
+        <div id="dz2" className="visualizer-container" >                        
         <Slider
           id="dz2"
-          defaultValue={170}
+          defaultValue={NUMBER_OF_ARRAY_BARS}
           onChangeCommitted={() => this.setArrayBarNumber()}
-          getAriaValueText={valuetext}
           aria-labelledby="discrete-slider"
-          step={40}
+          step={isMobile ? 20 : 40}
           marks
           min={10}
-          max={210}
+          max={isMobile ? 90 : 210}
+          style={isMobile ? {top : '30px'}: {top : '15px'}}
           /></div>
         {array.map((value, idx) => (
           <div

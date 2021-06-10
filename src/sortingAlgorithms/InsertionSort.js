@@ -7,7 +7,6 @@ export function getInsertionSortAnimations(array) {
 
 
 function doInsertion(array, animations) { 
-    { 
         let n = array.length; 
         for (let i = 1; i < n; ++i) { 
             let key = array[i]; 
@@ -32,5 +31,5 @@ function doInsertion(array, animations) {
     
             array[j + 1] = key; 
         } 
-    }
+        
 }
